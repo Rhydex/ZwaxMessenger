@@ -14,7 +14,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    @IBAction func txtRegUserName(_ sender: Any) {
+    }
 
+    @IBAction func txtRegPass1(_ sender: Any) {
+    }
 
+    @IBAction func txtRegPass2(_ sender: Any) {
+    }
+
+    @IBAction func btnRegister(_ sender: Any) {
+    }
+    
 }
 
