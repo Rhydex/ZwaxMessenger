@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
+    } 
     
     @IBAction func loginUser(_ sender: Any) {
         Auth.auth().signIn(withEmail: (usernameSignin.text?.trimmingCharacters(in: .whitespacesAndNewlines))!, password: passwordSignin.text!) { (user, error) in
