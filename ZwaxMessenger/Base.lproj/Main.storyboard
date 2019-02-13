@@ -137,6 +137,7 @@
                             <constraint firstItem="e1H-HP-unC" firstAttribute="top" secondItem="BOE-ce-bcN" secondAttribute="top" constant="210" id="a66-bo-KW9"/>
                             <constraint firstItem="e8N-ro-qGf" firstAttribute="top" secondItem="fdt-qu-SoN" secondAttribute="bottom" constant="69" id="aWQ-AY-1DZ"/>
                             <constraint firstItem="e1H-HP-unC" firstAttribute="leading" secondItem="BOE-ce-bcN" secondAttribute="leading" constant="108" id="kdx-Fw-4Wx"/>
+                            <constraint firstItem="fdt-qu-SoN" firstAttribute="top" secondItem="e1H-HP-unC" secondAttribute="bottom" constant="8" id="pTA-1m-UB8"/>
                             <constraint firstItem="e1H-HP-unC" firstAttribute="leading" secondItem="fdt-qu-SoN" secondAttribute="leading" id="sOr-OE-POq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BOE-ce-bcN"/>
