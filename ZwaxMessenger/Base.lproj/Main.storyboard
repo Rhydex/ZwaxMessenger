@@ -30,7 +30,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FGg-3X-VRa"/>
-                                    <segue destination="cDK-TA-fQd" kind="show" id="qC3-hK-l4g"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="User Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="64M-ay-h5Y" userLabel="UserName">
@@ -135,7 +134,6 @@
                             <constraint firstItem="e8N-ro-qGf" firstAttribute="centerX" secondItem="e1H-HP-unC" secondAttribute="centerX" id="OCI-G6-lWr"/>
                             <constraint firstItem="e8N-ro-qGf" firstAttribute="centerX" secondItem="nwq-Xc-eE2" secondAttribute="centerX" id="Y5x-1a-5g7"/>
                             <constraint firstItem="e1H-HP-unC" firstAttribute="top" secondItem="BOE-ce-bcN" secondAttribute="top" constant="210" id="a66-bo-KW9"/>
-                            <constraint firstItem="e8N-ro-qGf" firstAttribute="top" secondItem="fdt-qu-SoN" secondAttribute="bottom" constant="69" id="aWQ-AY-1DZ"/>
                             <constraint firstItem="e1H-HP-unC" firstAttribute="leading" secondItem="BOE-ce-bcN" secondAttribute="leading" constant="108" id="kdx-Fw-4Wx"/>
                             <constraint firstItem="fdt-qu-SoN" firstAttribute="top" secondItem="e1H-HP-unC" secondAttribute="bottom" constant="8" id="pTA-1m-UB8"/>
                             <constraint firstItem="e1H-HP-unC" firstAttribute="leading" secondItem="fdt-qu-SoN" secondAttribute="leading" id="sOr-OE-POq"/>
