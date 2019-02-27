@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginView Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ZwaxMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="LoginView Controller" customClass="ViewController" customModule="ZwaxMessenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,22 +52,33 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Zwax_logo" translatesAutoresizingMaskIntoConstraints="NO" id="d6P-jT-Q2q">
                                 <rect key="frame" x="81" y="90" width="213" height="106"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gL-oQ-PG9">
-                                <rect key="frame" x="150" y="367" width="75" height="30"/>
+                                <rect key="frame" x="160.5" y="367" width="54" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="Ie9-FS-Kcl"/>
-                                </constraints>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Tbn-9p-Byp" kind="show" id="fXe-Aa-qSn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-vg-GJP" userLabel="ResetPasswordButton">
+                                <rect key="frame" x="117" y="564" width="141" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="PIE-Of-cL7"/>
+                                    <constraint firstAttribute="height" constant="30" id="fQJ-ez-iU1"/>
+                                </constraints>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BLJ-iu-6Zg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,8 +91,11 @@
                             <constraint firstItem="64M-ay-h5Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="izf-KB-MEe"/>
                             <constraint firstItem="d6P-jT-Q2q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jSl-8m-GI2"/>
                             <constraint firstItem="ylL-q5-Lao" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="no0-0O-OKt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6ly-vg-GJP" secondAttribute="bottom" constant="73" id="pqw-En-omU"/>
+                            <constraint firstItem="6ly-vg-GJP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="qn5-ch-unv"/>
                             <constraint firstItem="uDT-Rm-8cF" firstAttribute="top" secondItem="ylL-q5-Lao" secondAttribute="bottom" constant="19" id="sKm-3W-n1K"/>
                             <constraint firstItem="uDT-Rm-8cF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vG5-dF-t3W"/>
+                            <constraint firstItem="6ly-vg-GJP" firstAttribute="centerX" secondItem="1gL-oQ-PG9" secondAttribute="centerX" id="zeN-IC-KQP"/>
                             <constraint firstItem="1gL-oQ-PG9" firstAttribute="top" secondItem="uDT-Rm-8cF" secondAttribute="bottom" constant="15" id="zxi-HP-Hdc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -90,6 +104,7 @@
                     <connections>
                         <outlet property="passwordSignin" destination="ylL-q5-Lao" id="oqV-lk-BWQ"/>
                         <outlet property="usernameSignin" destination="64M-ay-h5Y" id="Bao-gR-nKr"/>
+                        <segue destination="cDK-TA-fQd" kind="show" identifier="loggedIn" id="l9d-WQ-Vrf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -118,13 +133,13 @@
                                 <rect key="frame" x="108" y="312" width="159" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e1H-HP-unC">
                                 <rect key="frame" x="108" y="274" width="159" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="username"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,20 +164,70 @@
             </objects>
             <point key="canvasLocation" x="1855.2" y="448.42578710644682"/>
         </scene>
-        <!--View Controller-->
+        <!--MainView Controller-->
         <scene sceneID="1U1-dy-DAC">
             <objects>
-                <viewController id="cDK-TA-fQd" sceneMemberID="viewController">
+                <viewController id="cDK-TA-fQd" userLabel="MainView Controller" customClass="MainViewController" customModule="ZwaxMessenger" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gUm-ad-vxO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngt-7x-nW6" userLabel="ChangeEmailButton">
+                                <rect key="frame" x="104" y="528" width="141" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ob6-6E-U52"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="coX-NS-dPy"/>
+                                </constraints>
+                                <state key="normal" title="Change Email">
+                                    <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeEmailButton:" destination="cDK-TA-fQd" eventType="touchUpInside" id="7mv-My-PHS"/>
+                                    <action selector="loginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0K-EN-X40"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dml-Le-zK3">
+                                <rect key="frame" x="77" y="318" width="218" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q86-Nb-TJS" userLabel="ChangeEmailButton">
+                                <rect key="frame" x="280" y="617" width="55" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IDc-C9-aci"/>
+                                </constraints>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="cDK-TA-fQd" eventType="touchUpInside" id="gtN-Ag-gRI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3jF-Lg-NXQ" firstAttribute="trailing" secondItem="ngt-7x-nW6" secondAttribute="trailing" constant="130" id="Bpz-Y3-mYb"/>
+                            <constraint firstItem="3jF-Lg-NXQ" firstAttribute="trailing" secondItem="q86-Nb-TJS" secondAttribute="trailing" constant="40" id="D3i-eX-0pe"/>
+                            <constraint firstItem="Dml-Le-zK3" firstAttribute="top" secondItem="3jF-Lg-NXQ" secondAttribute="top" constant="254" id="FeT-K2-LcK"/>
+                            <constraint firstItem="3jF-Lg-NXQ" firstAttribute="trailing" secondItem="Dml-Le-zK3" secondAttribute="trailing" constant="80" id="MEW-r4-lRL"/>
+                            <constraint firstItem="q86-Nb-TJS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3jF-Lg-NXQ" secondAttribute="leading" id="ZUz-9L-x51"/>
+                            <constraint firstItem="ngt-7x-nW6" firstAttribute="top" secondItem="3jF-Lg-NXQ" secondAttribute="top" constant="464" id="Zee-Fh-gex"/>
+                            <constraint firstAttribute="bottom" secondItem="q86-Nb-TJS" secondAttribute="bottom" constant="20" symbolic="YES" id="ju3-bM-fVF"/>
+                            <constraint firstItem="Dml-Le-zK3" firstAttribute="leading" secondItem="3jF-Lg-NXQ" secondAttribute="leading" constant="77" id="xhx-qj-jlV"/>
+                            <constraint firstItem="ngt-7x-nW6" firstAttribute="leading" secondItem="3jF-Lg-NXQ" secondAttribute="leading" constant="104" id="zh2-uo-rGR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3jF-Lg-NXQ"/>
                     </view>
+                    <connections>
+                        <outlet property="newEmailBox" destination="Dml-Le-zK3" id="Q9y-5F-8Uj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coW-db-TW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855" y="-242"/>
+            <point key="canvasLocation" x="1853.5999999999999" y="-242.42878560719643"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kt6-KZ-zyT">

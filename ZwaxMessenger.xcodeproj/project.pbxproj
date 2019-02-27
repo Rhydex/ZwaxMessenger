@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C3A1F8920EFD49911C39088 /* Pods_ZwaxMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CFD0616407CF1A7978F14F /* Pods_ZwaxMessenger.framework */; };
+		B153233C222332C900543436 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153233B222332C900543436 /* MainViewController.swift */; };
 		B17A0D3D220E199F00B0D562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */; };
 		B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */; };
 		CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		6F675418348E39D4BA4A3CCD /* Pods-ZwaxMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZwaxMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		B153233B222332C900543436 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC2F8B78220CA9640017CD66 /* ZwaxMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZwaxMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				CC2F8B84220CA9690017CD66 /* LaunchScreen.storyboard */,
 				CC2F8B87220CA9690017CD66 /* Info.plist */,
 				B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */,
+				B153233B222332C900543436 /* MainViewController.swift */,
 			);
 			path = ZwaxMessenger;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */,
 				CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */,
 				CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */,
+				B153233C222332C900543436 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpButton(_ sender: Any) {
         Auth.auth().createUser(withEmail: (emailBox.text!.trimmingCharacters(in: .whitespaces)), password: passwordBox.text!){ (user, error) in
                 if error == nil {
-                    //self.performSegue(withIdentifier: "signupToHome", sender: self)
+                    _ = self.navigationController?.popToRootViewController(animated: false)//return to login page
                     let alertController = UIAlertController(title: "Success", message: "Account created!", preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     
@@ -40,15 +40,4 @@ class SignUpViewController: UIViewController {
                 }
             }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
