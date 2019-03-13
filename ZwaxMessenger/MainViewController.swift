@@ -48,15 +48,21 @@ class MainViewController: UIViewController {
         userLogOut()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        userLogOut()
+        //userLogOut()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         //???
         // Do any additional setup after loading the view.
     }
+    @IBAction func newMessage(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "newmessage", sender: self)
+    }
     
-
+    @IBAction func myChatsButton(_ sender: UIButton){
+        self.performSegue(withIdentifier: "mychats", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
