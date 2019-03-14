@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4C3A1F8920EFD49911C39088 /* Pods_ZwaxMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CFD0616407CF1A7978F14F /* Pods_ZwaxMessenger.framework */; };
+		B153233C222332C900543436 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153233B222332C900543436 /* MainViewController.swift */; };
 		B17A0D3D220E199F00B0D562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */; };
+		B1C89CD92235C11800D08B03 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CD82235C11800D08B03 /* MessageViewController.swift */; };
+		B1C89CE12236D4E500D08B03 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE02236D4E500D08B03 /* Message.swift */; };
+		B1C89CE32236D66100D08B03 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE22236D66100D08B03 /* LocalCollection.swift */; };
+		B1C89CE52236DC4B00D08B03 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */; };
+		B1C89CE72236EB8200D08B03 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */; };
 		B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */; };
 		CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */; };
 		CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F8B7D220CA9640017CD66 /* ViewController.swift */; };
@@ -19,7 +25,13 @@
 
 /* Begin PBXFileReference section */
 		6F675418348E39D4BA4A3CCD /* Pods-ZwaxMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZwaxMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		B153233B222332C900543436 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1C89CD82235C11800D08B03 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		B1C89CE02236D4E500D08B03 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B1C89CE22236D66100D08B03 /* LocalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
+		B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC2F8B78220CA9640017CD66 /* ZwaxMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZwaxMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +93,12 @@
 				CC2F8B84220CA9690017CD66 /* LaunchScreen.storyboard */,
 				CC2F8B87220CA9690017CD66 /* Info.plist */,
 				B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */,
+				B153233B222332C900543436 /* MainViewController.swift */,
+				B1C89CD82235C11800D08B03 /* MessageViewController.swift */,
+				B1C89CE02236D4E500D08B03 /* Message.swift */,
+				B1C89CE22236D66100D08B03 /* LocalCollection.swift */,
+				B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */,
+				B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */,
 			);
 			path = ZwaxMessenger;
 			sourceTree = "<group>";
@@ -106,6 +124,7 @@
 				CC2F8B75220CA9640017CD66 /* Frameworks */,
 				CC2F8B76220CA9640017CD66 /* Resources */,
 				3B98567DF67E2DC615DAA147 /* [CP] Embed Pods Frameworks */,
+				484981B5578C8E87497C70A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,21 +192,61 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		484981B5578C8E87497C70A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66ADD684543BCAE3C312DDA5 /* [CP] Check Pods Manifest.lock */ = {
@@ -221,7 +280,13 @@
 			files = (
 				B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */,
 				CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */,
+				B1C89CE72236EB8200D08B03 /* MessageTableViewCell.swift in Sources */,
 				CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */,
+				B1C89CE12236D4E500D08B03 /* Message.swift in Sources */,
+				B1C89CE32236D66100D08B03 /* LocalCollection.swift in Sources */,
+				B1C89CD92235C11800D08B03 /* MessageViewController.swift in Sources */,
+				B1C89CE52236DC4B00D08B03 /* ChatsViewController.swift in Sources */,
+				B153233C222332C900543436 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

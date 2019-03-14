@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F396185D941C7C7EEE3510144C79950D"
+               BlueprintIdentifier = "92935E858E48362EB0CBCFB1BAC7B1E6"
                BuildableName = "Pods_ZwaxMessenger.framework"
                BlueprintName = "Pods-ZwaxMessenger"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F396185D941C7C7EEE3510144C79950D"
+            BlueprintIdentifier = "92935E858E48362EB0CBCFB1BAC7B1E6"
             BuildableName = "Pods_ZwaxMessenger.framework"
             BlueprintName = "Pods-ZwaxMessenger"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -8,5 +8,10 @@ target 'ZwaxMessenger' do
   # Pods for ZwaxMessenger
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
+  pod 'MessageKit'
+  pod 'JSQMessagesViewController'
 end
