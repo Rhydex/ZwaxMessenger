@@ -60,7 +60,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func myChatsButton(_ sender: UIButton){
-        self.performSegue(withIdentifier: "mychats", sender: self)
+        self.performSegue(withIdentifier: "channels", sender: self)
     }
     
     /*
