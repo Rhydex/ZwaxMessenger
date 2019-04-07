@@ -8,8 +8,17 @@
 
 import Foundation
 import Firebase
+import MessageKit
 
-struct Message {
+struct Message : MessageType{
+    
+    var sender: Sender
+    
+    var messageId: String
+    
+    var sentDate: Date
+    
+    var kind: MessageKind
     
     var content : String
     var senderEmail: String
@@ -21,6 +30,10 @@ struct Message {
         self.senderEmail = senderEmail
         self.destinationEmail = destinationEmail
         self.timestamp = timestamp
+        self.messageId = ""
+        self.sentDate = Date.init()
+        self.sender = Sender(id: messageId, displayName: senderEmail)
+        self.kind = MessageKind.text(content)
     }
     
     var dictionary: [String: Any] {
@@ -46,4 +59,14 @@ extension Message : DocumentSerializable{
                   destinationEmail: destinationEmail,
                   timestamp: timestamp)
     }
+}
+
+extension Message: Comparable {
+    static func == (lhs: Message, rhs: Message) -> Bool { // dont use
+        return false
+    }
+    static func < (lhs: Message, rhs: Message) -> Bool {
+        return lhs.timestamp < rhs.timestamp
+    }
+    
 }

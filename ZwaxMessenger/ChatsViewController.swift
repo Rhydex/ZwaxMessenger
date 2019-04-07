@@ -10,7 +10,8 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 
-class ChatsViewController: UITableViewController {
+class ChatsViewController: UITableViewController, MessageTableViewCellDelegate {
+    
     
     var messages = [Message]()
     
@@ -46,8 +47,13 @@ class ChatsViewController: UITableViewController {
         
         cell.destName.text = message.senderEmail
         cell.lastMessage.text = message.content
+        cell.delegate = self
         
         return cell
+    }
+
+    func MessageTableViewCellTappedView(_ sender: MessageTableViewCell) {
+        performSegue(withIdentifier: "conversation", sender: self)
     }
     
     private func loadSentMessages(){ // grab data from firebase
@@ -81,8 +87,6 @@ class ChatsViewController: UITableViewController {
             self.tableView.reloadData()
         }
         // sent messages
-        
-        
     }
     private func loadReceivedMessages(){ // grab data from firebase
         let currentUser = Auth.auth().currentUser
