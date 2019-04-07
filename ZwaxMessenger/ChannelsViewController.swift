@@ -7,22 +7,18 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import Firebase
 
 class ChannelsViewController: UIViewController, UITableViewDataSource {
-  
     
-    @IBOutlet var channelTable: UITableView!
-    @IBOutlet var userEmail: UILabel!
-    
-    private var messages = [Message]()
+    @IBOutlet weak var tableView: UITableView!
+    private var channels = [Channel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        channelTable.register(MessageTableViewCell.self, forCellReuseIdentifier: "MessageTableViewCell")
-        channelTable.dataSource = self
-        userEmail.text = Auth.auth().currentUser?.email
-        loadSampleMessages()
+        tableView.dataSource = self
+        loadChannels()
     }
     
     func userLogOut(){ // returns to login view and displays popup
@@ -40,59 +36,56 @@ class ChannelsViewController: UIViewController, UITableViewDataSource {
         }
         
     }
-    func loadMessages(){ // loads the most recent message from the database as a table view cell
-        //use firebase to get the most recent message from each other user/channel
-    }
     @IBAction func logOut(_ sender: UIButton) {
         userLogOut()
-    }
-    private func loadSampleMessages(){
-        guard let testMessage0 =
-            Message(content:"test",senderEmail:"test0@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage1 =
-            Message(content:"test1",senderEmail:"test1@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage2 =
-            Message(content:"test2",senderEmail:"test2@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage3 =
-            Message(content:"test3",senderEmail:"test3@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage4 =
-            Message(content:"test4",senderEmail:"test4@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        messages.append(testMessage0)
-        messages.append(testMessage1)
-        messages.append(testMessage2)
-        messages.append(testMessage3)
-        messages.append(testMessage4)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return channels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell") as? MessageTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of MessageTableViewCell.")
+        let cellIdentifier = "ChannelTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChannelTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        let msg = messages[indexPath.row]
+        let channel = channels[indexPath.row]
         
-        cell.destName?.text = msg.destinationEmail
-        cell.lastMessage?.text = msg.content
+        cell.channelName.text = channel.channelName
+        cell.channelDescription.text = channel.channelDescription
         
         return cell
     }
-
+    
+    private func loadChannels(){ // grab data from firebase
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        let msgRef = db.collection("channels").addSnapshotListener{
+            querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error retreiving snapshots \(error!)")
+                return
+            }
+            for document in snapshot.documents{ // iterates through each message
+                let channelName : String = document.data()["channelName"] as! String
+                guard let newChannel =
+                    Channel(
+                        channelName:document.data() ["channelName"] as! String,
+                        channelDescription:document.data() ["channelDescription"] as! String,
+                        users:document.data() ["users"] as! [String]
+                    )
+                    else{
+                        fatalError("Unable to instantiate Channel")
+                    }
+                self.channels.append(newChannel)
+            }
+            self.tableView.reloadData()
+        }
+    }
 }
