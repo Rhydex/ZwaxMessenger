@@ -12,43 +12,17 @@ import Firebase
 import MessageKit
 import FirebaseFirestore
 
-class ConversationViewController: MessagesViewController {
+class ConversationViewController: UIViewController {
 
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var channelLabel: UILabel!
+    @IBOutlet var messageText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-}
-
-extension ConversationViewController: MessagesDisplayDelegate {
-    
-    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return (message.sender.displayName == Auth.auth().currentUser?.email) ? .primary : .incomingMessage
-    }
-    
-    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
-        return false
-    }
-    
-    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        let corner: MessageStyle.TailCorner = (message.sender.displayName == Auth.auth().currentUser?.email) ? .bottomRight : .bottomLeft
-        return .bubbleTail(corner, .curved)
-    }
-    
-}
-extension ConversationViewController: MessagesLayoutDelegate {
-    
-    func avatarSize(for message: Message, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return .zero
-    }
-    
-    func footerViewSize(for message: Message, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 0, height: 8)
-    }
-    
-    func heightForLocation(message: Message, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         
-        return 0
     }
-    
+    @IBAction func sendMessage(_ sender: Any) {
+        
+    }
 }

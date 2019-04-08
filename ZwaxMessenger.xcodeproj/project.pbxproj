@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C3A1F8920EFD49911C39088 /* Pods_ZwaxMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CFD0616407CF1A7978F14F /* Pods_ZwaxMessenger.framework */; };
 		B1343465225928400073347F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1343464225928400073347F /* ConversationViewController.swift */; };
-		B1343469225AB4AB0073347F /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1343468225AB4AB0073347F /* UICollectionView+Additions.swift */; };
-		B134346B225AB4CD0073347F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134346A225AB4CD0073347F /* UIColor+Additions.swift */; };
-		B134346D225AB4DA0073347F /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134346C225AB4DA0073347F /* UIView+Additions.swift */; };
-		B134346F225AB4EB0073347F /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134346E225AB4EB0073347F /* UIImage+Additions.swift */; };
 		B153233C222332C900543436 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153233B222332C900543436 /* MainViewController.swift */; };
 		B17A0D3D220E199F00B0D562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */; };
 		B1C89CD92235C11800D08B03 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CD82235C11800D08B03 /* MessageViewController.swift */; };
@@ -32,10 +28,6 @@
 /* Begin PBXFileReference section */
 		6F675418348E39D4BA4A3CCD /* Pods-ZwaxMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZwaxMessenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		B1343464225928400073347F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		B1343468225AB4AB0073347F /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
-		B134346A225AB4CD0073347F /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
-		B134346C225AB4DA0073347F /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
-		B134346E225AB4EB0073347F /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		B153233B222332C900543436 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1C89CD82235C11800D08B03 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -76,17 +68,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B1343467225AB47A0073347F /* Extentions */ = {
-			isa = PBXGroup;
-			children = (
-				B1343468225AB4AB0073347F /* UICollectionView+Additions.swift */,
-				B134346A225AB4CD0073347F /* UIColor+Additions.swift */,
-				B134346C225AB4DA0073347F /* UIView+Additions.swift */,
-				B134346E225AB4EB0073347F /* UIImage+Additions.swift */,
-			);
-			path = Extentions;
-			sourceTree = "<group>";
-		};
 		CC2F8B6F220CA9640017CD66 = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +89,6 @@
 		CC2F8B7A220CA9640017CD66 /* ZwaxMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				B1343467225AB47A0073347F /* Extentions */,
 				CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */,
 				B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */,
 				CC2F8B7D220CA9640017CD66 /* ViewController.swift */,
@@ -306,7 +286,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD43687223B5E1200AF54B1 /* ChannelsViewController.swift in Sources */,
-				B134346B225AB4CD0073347F /* UIColor+Additions.swift in Sources */,
 				B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */,
 				CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */,
 				B1C89CE72236EB8200D08B03 /* MessageTableViewCell.swift in Sources */,
@@ -314,12 +293,9 @@
 				B1C89CE12236D4E500D08B03 /* Message.swift in Sources */,
 				B1C89CE32236D66100D08B03 /* LocalCollection.swift in Sources */,
 				B1C89CD92235C11800D08B03 /* MessageViewController.swift in Sources */,
-				B1343469225AB4AB0073347F /* UICollectionView+Additions.swift in Sources */,
 				B1C89CE52236DC4B00D08B03 /* ChatsViewController.swift in Sources */,
 				B1343465225928400073347F /* ConversationViewController.swift in Sources */,
-				B134346D225AB4DA0073347F /* UIView+Additions.swift in Sources */,
 				B153233C222332C900543436 /* MainViewController.swift in Sources */,
-				B134346F225AB4EB0073347F /* UIImage+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
