@@ -14,6 +14,9 @@ class MessageViewController: UIViewController {
 
     @IBOutlet var destBox: UITextField!
     @IBOutlet var contentBox: UITextView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +26,7 @@ class MessageViewController: UIViewController {
         let collection = Firestore.firestore().collection("messages")
         
         guard let message = Message(content: contentBox.text, senderEmail: (Auth.auth().currentUser?.email)!,
-                                    destinationEmail: destBox.text!, timestamp: Date().timeIntervalSince1970) else{
+                                    timestamp: Date().timeIntervalSince1970) else{
                                         fatalError("Unable to instantiate Message")
         }
         collection.addDocument(data: message.dictionary)
