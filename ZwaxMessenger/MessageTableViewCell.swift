@@ -11,18 +11,12 @@ import FirebaseFirestore
 import Firebase
 
 class MessageTableViewCell: UITableViewCell {
-
-    @IBOutlet var destName: UILabel!
-    @IBOutlet var lastMessage: UILabel!
-
+    
+    @IBOutlet var senderEmailLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // segue to chat screen with the other person and populate time ordered messages
-    }
-    
 }

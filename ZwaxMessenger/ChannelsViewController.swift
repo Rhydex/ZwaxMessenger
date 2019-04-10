@@ -10,15 +10,19 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 
-class ChannelsViewController: UIViewController, UITableViewDataSource {
+class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTableViewCellDelegate {
     
+    @IBOutlet var usernameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private var channels = [Channel]()
+    
+    static var currentChannelName : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         loadChannels()
+        usernameLabel.text = Auth.auth().currentUser?.email // shows the user's email on the bottom
     }
     
     func userLogOut(){ // returns to login view and displays popup
@@ -59,8 +63,15 @@ class ChannelsViewController: UIViewController, UITableViewDataSource {
         
         cell.channelName.text = channel.channelName
         cell.channelDescription.text = channel.channelDescription
+        cell.delegate = self
         
         return cell
+    }
+    
+    func channelTableViewCellDidTapView(_ sender: ChannelTableViewCell) {
+        print("view button clicked for " + sender.channelName.text!)
+        ChannelsViewController.currentChannelName = sender.channelName.text!
+        performSegue(withIdentifier: "chats", sender: self)
     }
     
     private func loadChannels(){ // grab data from firebase
@@ -73,17 +84,19 @@ class ChannelsViewController: UIViewController, UITableViewDataSource {
                 return
             }
             for document in snapshot.documents{ // iterates through each message
-                let channelName : String = document.data()["channelName"] as! String
                 guard let newChannel =
                     Channel(
-                        channelName:document.data() ["channelName"] as! String,
-                        channelDescription:document.data() ["channelDescription"] as! String,
-                        users:document.data() ["users"] as! [String]
+                        channelName: document.data() ["channelName"] as! String,
+                        channelDescription: document.data() ["channelDescription"] as! String,
+                        users: document.data() ["users"] as! [String]
                     )
                     else{
                         fatalError("Unable to instantiate Channel")
                     }
-                self.channels.append(newChannel)
+                if(newChannel.users.contains((currentUser?.email)!)){
+                    // only displays the channels a user is a part of
+                    self.channels.append(newChannel)
+                }
             }
             self.tableView.reloadData()
         }
