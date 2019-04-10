@@ -14,6 +14,9 @@ class ChannelTableViewCell: UITableViewCell {
     
     @IBOutlet weak var channelDescription: UILabel!
     @IBOutlet weak var channelName: UILabel!
+    
+    weak var delegate: ChannelTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,4 +27,11 @@ class ChannelTableViewCell: UITableViewCell {
         // segue to chat screen with the other person and populate time ordered messages
     }
     
+    @IBAction func viewButtonClicked(_ sender: Any) {
+        delegate?.channelTableViewCellDidTapView(self)
+    }
+}
+
+protocol ChannelTableViewCellDelegate : class {
+    func channelTableViewCellDidTapView(_ sender: ChannelTableViewCell)
 }
