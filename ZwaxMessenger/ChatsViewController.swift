@@ -17,13 +17,14 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     
     var messages = [Message]()
-    
-    var channelID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMessages()
         channelNameLabel.text = ChannelsViewController.currentChannelName
+        tableView.dataSource = self
+        self.tableView.reloadData()
+        loadMessages()
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,20 +60,7 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
     @IBAction func sendButton(_ sender: Any) {
         let db = Firestore.firestore()
         let channels = db.collection("channels")
-        
-        let chRef = channels.addSnapshotListener{
-            querySnapshot, error in
-            guard let snapshot = querySnapshot else {
-                print("Error retreiving snapshots \(error!)")
-                return
-            }
-            for document in snapshot.documents{
-                if(document.data()["channelName"] as! String == ChannelsViewController.currentChannelName){ // finding the channel id
-                    self.channelID = document.documentID
-                }
-            }
-        }
-        let messages = channels.document(channelID).collection("messages")
+        let messages = channels.document(ChannelsViewController.currentChannelID).collection("messages")
            guard let message = Message(content: messageBox.text!, senderEmail: (Auth.auth().currentUser?.email)!,
                                         timestamp: Date().timeIntervalSince1970) else{
                                             fatalError("Unable to instantiate Message")
@@ -80,23 +68,29 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
             messages.addDocument(data: message.dictionary)
         
         messageBox.text = ""
+        loadMessages()
+    }
+    
+    private func sortMessages(){
+        messages.sort(by: { $0.timestamp > $1.timestamp })
     }
     
     private func loadMessages(){ // grab data from firebase
+        print("loading messages from", ChannelsViewController.currentChannelName)
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
-        let channels = db.collection("channels")
-        let msgRef = channels.document(self.channelID).collection("messages").addSnapshotListener{
+        db.collection("channels").document(ChannelsViewController.currentChannelID).collection("messages").addSnapshotListener{
             querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error retreiving snapshots \(error!)")
                 return
             }
+            self.messages.removeAll()
             for document in snapshot.documents{ // iterates through each message
                     guard let newmessage =
                         Message(
                             content:document.data()["content"] as! String,
-                            senderEmail:document.data()["sender"] as! String,
+                            senderEmail:document.data()["senderEmail"] as! String,
                             timestamp:document.data()["timestamp"] as! Double)
                         else{
                             fatalError("Unable to instantiate Message")
@@ -104,7 +98,9 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
                     print(newmessage)
                     self.messages.append(newmessage)
             }
-            self.tableView.reloadData()
+
         }
+        sortMessages()
+        self.tableView.reloadData()
     }
 }

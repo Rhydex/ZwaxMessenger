@@ -17,6 +17,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTa
     private var channels = [Channel]()
     
     static var currentChannelName : String = ""
+    static var currentChannelID : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,19 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTa
     
     func channelTableViewCellDidTapView(_ sender: ChannelTableViewCell) {
         print("view button clicked for " + sender.channelName.text!)
+        let db = Firestore.firestore().collection("channels")
+        let chRef = db.addSnapshotListener{
+            querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error retreiving snapshots \(error!)")
+                return
+            }
+            for document in snapshot.documents{
+                if(document.data()["channelName"] as? String == sender.channelName.text){ // finding the channel id
+                    ChannelsViewController.currentChannelID = document.documentID
+                }
+            }
+        }
         ChannelsViewController.currentChannelName = sender.channelName.text!
         performSegue(withIdentifier: "chats", sender: self)
     }
@@ -83,7 +97,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTa
                 print("Error retreiving snapshots \(error!)")
                 return
             }
-            for document in snapshot.documents{ // iterates through each message
+            for document in snapshot.documents{ 
                 guard let newChannel =
                     Channel(
                         channelName: document.data() ["channelName"] as! String,
