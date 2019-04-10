@@ -16,6 +16,8 @@
 		B1C89CE52236DC4B00D08B03 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */; };
 		B1C89CE72236EB8200D08B03 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */; };
 		B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */; };
+		CC2B7BB4224D8F480062C147 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2B7BB3224D8F480062C147 /* ChannelTableViewCell.swift */; };
+		CC2B7BB6224D9B620062C147 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2B7BB5224D9B620062C147 /* Channel.swift */; };
 		CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */; };
 		CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F8B7D220CA9640017CD66 /* ViewController.swift */; };
 		CC2F8B81220CA9640017CD66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2F8B7F220CA9640017CD66 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		B1CD0DEF22110ED6004D8E14 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC2B7BB3224D8F480062C147 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
+		CC2B7BB5224D9B620062C147 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		CC2F8B78220CA9640017CD66 /* ZwaxMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZwaxMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2F8B7B220CA9640017CD66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC2F8B7D220CA9640017CD66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				B1C89CE42236DC4B00D08B03 /* ChatsViewController.swift */,
 				B1C89CE62236EB8200D08B03 /* MessageTableViewCell.swift */,
 				CCD43686223B5E1200AF54B1 /* ChannelsViewController.swift */,
+				CC2B7BB3224D8F480062C147 /* ChannelTableViewCell.swift */,
+				CC2B7BB5224D9B620062C147 /* Channel.swift */,
 			);
 			path = ZwaxMessenger;
 			sourceTree = "<group>";
@@ -150,6 +156,7 @@
 				TargetAttributes = {
 					CC2F8B77220CA9640017CD66 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -282,9 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD43687223B5E1200AF54B1 /* ChannelsViewController.swift in Sources */,
+				CC2B7BB6224D9B620062C147 /* Channel.swift in Sources */,
 				B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */,
 				CC2F8B7E220CA9640017CD66 /* ViewController.swift in Sources */,
 				B1C89CE72236EB8200D08B03 /* MessageTableViewCell.swift in Sources */,
+				CC2B7BB4224D8F480062C147 /* ChannelTableViewCell.swift in Sources */,
 				CC2F8B7C220CA9640017CD66 /* AppDelegate.swift in Sources */,
 				B1C89CE12236D4E500D08B03 /* Message.swift in Sources */,
 				B1C89CE32236D66100D08B03 /* LocalCollection.swift in Sources */,

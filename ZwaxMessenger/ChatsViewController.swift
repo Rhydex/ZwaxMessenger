@@ -16,7 +16,8 @@ class ChatsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleMessages()
+        //loadSampleMessages()
+        loadReceivedMessages()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,36 +50,69 @@ class ChatsViewController: UITableViewController {
         return cell
     }
     
-    private func loadUserMessages(){ // grab data from firebase
-        //let currentUser = Auth.auth().currentUser
-        //let collection = Firestore.firestore().collection("messages")
+    private func loadSentMessages(){ // grab data from firebase
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        let msgRef = db.collection("messages").addSnapshotListener{
+            querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error retreiving snapshots \(error!)")
+                return
+            }
+            for document in snapshot.documents{ // iterates through each message
+                let senderEmail : String = document.data()["senderEmail"] as! String
+                if(senderEmail == currentUser?.email){
+                    guard let newmessage =
+                        Message(
+                            content:document.data()["content"] as! String,
+                            senderEmail:document.data()["senderEmail"] as! String,
+                            destinationEmail:document.data()["destinationEmail"] as! String,
+                            timestamp:document.data()["timestamp"] as! Double)
+                        else{
+                            fatalError("Unable to instantiate Message")
+                    }
+                    print(newmessage)
+                    self.messages.append(newmessage)
+                }
+                else{
+                    //print("not your message!")
+                }
+            }
+            self.tableView.reloadData()
+        }
+        // sent messages
+        
+        
     }
-    
-    private func loadSampleMessages(){
-        guard let testMessage0 =
-            Message(content:"test",senderEmail:"test0@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
+    private func loadReceivedMessages(){ // grab data from firebase
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        let msgRef = db.collection("messages").addSnapshotListener{
+            querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error retreiving snapshots \(error!)")
+                return
+            }
+            for document in snapshot.documents{ // iterates through each message
+                let destinationEmail : String = document.data()["destinationEmail"] as! String
+                if(destinationEmail == currentUser?.email){
+                    guard let newmessage =
+                        Message(
+                            content:document.data()["content"] as! String,
+                            senderEmail:document.data()["senderEmail"] as! String,
+                            destinationEmail:document.data()["destinationEmail"] as! String,
+                            timestamp:document.data()["timestamp"] as! Double)
+                        else{
+                            fatalError("Unable to instantiate Message")
+                    }
+                    print(newmessage)
+                    self.messages.append(newmessage)
+                }
+                else{
+                    //print("not your message!")
+                }
+            }
+            self.tableView.reloadData()
         }
-        guard let testMessage1 =
-            Message(content:"test1",senderEmail:"test1@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage2 =
-            Message(content:"test2",senderEmail:"test2@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage3 =
-            Message(content:"test3",senderEmail:"test3@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        guard let testMessage4 =
-            Message(content:"test4",senderEmail:"test4@test.com",destinationEmail:"test2@test2.com", timestamp:Date().timeIntervalSince1970) else{
-                fatalError("Unable to instantiate Message")
-        }
-        messages.append(testMessage0)
-        messages.append(testMessage1)
-        messages.append(testMessage2)
-        messages.append(testMessage3)
-        messages.append(testMessage4)
     }
 }

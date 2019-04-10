@@ -55,13 +55,16 @@ class MainViewController: UIViewController {
         //???
         // Do any additional setup after loading the view.
     }
+    @IBAction func myChannels(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "channels", sender: self)
+    }
+    @IBAction func myChats(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "chats", sender: self)
+    }
     @IBAction func newMessage(_ sender: UIButton) {
         self.performSegue(withIdentifier: "newmessage", sender: self)
     }
     
-    @IBAction func myChatsButton(_ sender: UIButton){
-        self.performSegue(withIdentifier: "channels", sender: self)
-    }
     
     /*
     // MARK: - Navigation
