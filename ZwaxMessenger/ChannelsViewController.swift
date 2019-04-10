@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
-
+import Photos
 class ChannelsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +19,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         tableView.dataSource = self
         loadChannels()
+        
     }
     
     func userLogOut(){ // returns to login view and displays popup
