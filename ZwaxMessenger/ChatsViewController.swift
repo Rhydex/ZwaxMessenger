@@ -9,14 +9,20 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import MobileCoreServices
 
-class ChatsViewController: UIViewController, UITableViewDataSource {
+class ChatsViewController: UIViewController, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var channelNameLabel: UILabel!
     @IBOutlet var messageBox: UITextField!
     @IBOutlet var tableView: UITableView!
     
     var messages = [Message]()
+    var picArray = [UIImage]()
+    var order = [Int]()
+    var database: Database!
+    var storage: Storage!
+    var counter = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +31,8 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
         self.tableView.reloadData()
         loadMessages()
         self.tableView.reloadData()
+        database = Database.database()
+        storage = Storage.storage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +46,15 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return messages.count + picArray.count
+    }
+    
+    @IBAction func sendPhoto(_ sender: Any) {
+        let profileImagePicker = UIImagePickerController()
+        profileImagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        profileImagePicker.mediaTypes = [kUTTypeImage as String]
+        profileImagePicker.delegate = self
+        present(profileImagePicker, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,12 +64,16 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell  else {
             fatalError("The dequeued cell is not an instance of MessageTableViewCell")
         }
-        
+        if(order[indexPath.row] == 1)
+        {
         let message = messages[indexPath.row]
         
         cell.senderEmailLabel.text = message.senderEmail
         cell.messageLabel.text = message.content
-        
+        }
+        else{
+            cell.imageView?.image = picArray[indexPath.row]
+        }
         return cell
     }
     
@@ -70,6 +90,8 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
         messageBox.text = ""
         loadMessages()
     }
+    
+    
     
     private func sortMessages(){
         messages.sort(by: { $0.timestamp > $1.timestamp })
@@ -97,10 +119,60 @@ class ChatsViewController: UIViewController, UITableViewDataSource {
                     }
                     print(newmessage)
                     self.messages.append(newmessage)
+                    self.order.append(1)
             }
 
         }
         sortMessages()
         self.tableView.reloadData()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        if let profileImage = info[.originalImage] as? UIImage, let optimizedImageData =  profileImage.jpegData(compressionQuality: 0.6)
+        {
+            // upload image from here
+            uploadProfileImage(imageData: optimizedImageData)
+        }
+        picker.dismiss(animated: true, completion:nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        picker.dismiss(animated: true, completion:nil)
+    }
+    
+    func uploadProfileImage(imageData: Data)
+    {
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
+        
+        let storageReference = Storage.storage().reference()
+        let currentUser = Auth.auth().currentUser
+        let profileImageRef = storageReference.child("users").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
+
+            // Write the download URL to the Realtime Database
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpeg"
+        
+        profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
+            
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+            
+            if error != nil
+            {
+                print("Error took place \(String(describing: error?.localizedDescription))")
+                return
+            } else {
+                
+                //self.userProfileImageView.image = UIImage(data: imageData)
+                
+                print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+            }
+        }
     }
 }

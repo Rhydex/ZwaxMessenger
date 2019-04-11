@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import Photos
 
 class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTableViewCellDelegate {
     
@@ -25,7 +26,18 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTa
         loadChannels()
         usernameLabel.text = Auth.auth().currentUser?.email // shows the user's email on the bottom
     }
-    
+    @objc private func cameraButtonPressed() {
+        let picker = UIImagePickerController()
+        picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+    }
     func userLogOut(){ // returns to login view and displays popup
         let firebaseAuth = Auth.auth()
         do {
