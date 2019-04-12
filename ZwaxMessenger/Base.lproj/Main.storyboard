@@ -308,6 +308,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="9zw-jf-kqz" kind="show" id="cQa-0O-DrK"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1ZU-xj-mx6">
                                 <rect key="frame" x="0.0" y="107" width="375" height="490"/>
@@ -532,6 +535,95 @@
             </objects>
             <point key="canvasLocation" x="3480.8000000000002" y="133.5832083958021"/>
         </scene>
+        <!--Channel Add View Controller Scene-->
+        <scene sceneID="qpQ-LY-GS2">
+            <objects>
+                <viewController title="Channel Add View Controller Scene" id="9zw-jf-kqz" customClass="ChannelAddViewController" customModule="ZwaxMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JPf-1i-YWl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Channel Name...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLu-ys-9bK">
+                                <rect key="frame" x="121.5" y="132" width="132" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="channelName:" destination="Xxv-fO-Iu9" eventType="editingDidEnd" id="D2f-AB-iIQ"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CqU-eA-gzc">
+                                <rect key="frame" x="67" y="238" width="241" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBi-gI-7s6">
+                                <rect key="frame" x="67" y="209" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add User..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zb-LW-shm">
+                                <rect key="frame" x="141" y="423" width="93" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-5O-cfs">
+                                <rect key="frame" x="134.5" y="507" width="106" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="zNJ-cM-EEh"/>
+                                </constraints>
+                                <state key="normal" title="Create Channel">
+                                    <color key="titleColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createChannel:" destination="9zw-jf-kqz" eventType="touchUpInside" id="hf8-f2-JPj"/>
+                                    <action selector="createChannel:" destination="Xxv-fO-Iu9" eventType="touchUpInside" id="myy-9M-76d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel Creation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCk-a0-3fb">
+                                <rect key="frame" x="94" y="76" width="187" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.47483746370000002" green="1" blue="0.22753804029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pCk-a0-3fb" firstAttribute="centerX" secondItem="Oe7-QX-mHR" secondAttribute="centerX" id="1g4-N4-YaI"/>
+                            <constraint firstItem="pCk-a0-3fb" firstAttribute="leading" secondItem="Oe7-QX-mHR" secondAttribute="leading" constant="94" id="5mz-4D-qws"/>
+                            <constraint firstItem="YBi-gI-7s6" firstAttribute="leading" secondItem="CqU-eA-gzc" secondAttribute="leading" id="AFT-i7-YVC"/>
+                            <constraint firstItem="Oe7-QX-mHR" firstAttribute="bottom" secondItem="M1v-5O-cfs" secondAttribute="bottom" constant="130" id="E35-Bd-alB"/>
+                            <constraint firstItem="CqU-eA-gzc" firstAttribute="centerX" secondItem="Oe7-QX-mHR" secondAttribute="centerX" id="E4F-58-ctH"/>
+                            <constraint firstItem="YBi-gI-7s6" firstAttribute="leading" secondItem="Oe7-QX-mHR" secondAttribute="leading" constant="67" id="OD0-Zz-5Za"/>
+                            <constraint firstItem="kLu-ys-9bK" firstAttribute="centerX" secondItem="Oe7-QX-mHR" secondAttribute="centerX" id="UwW-gr-Ael"/>
+                            <constraint firstItem="M1v-5O-cfs" firstAttribute="top" secondItem="9zb-LW-shm" secondAttribute="bottom" constant="54" id="Vjq-wd-w4Q"/>
+                            <constraint firstItem="CqU-eA-gzc" firstAttribute="top" secondItem="kLu-ys-9bK" secondAttribute="bottom" constant="76" id="Wmq-cs-8pr"/>
+                            <constraint firstItem="Oe7-QX-mHR" firstAttribute="trailing" secondItem="YBi-gI-7s6" secondAttribute="trailing" constant="205" id="XFQ-hP-wnd"/>
+                            <constraint firstItem="CqU-eA-gzc" firstAttribute="top" secondItem="YBi-gI-7s6" secondAttribute="bottom" constant="8" symbolic="YES" id="bX5-wO-QiW"/>
+                            <constraint firstItem="kLu-ys-9bK" firstAttribute="top" secondItem="Oe7-QX-mHR" secondAttribute="top" constant="68" id="hZO-An-0xx"/>
+                            <constraint firstItem="M1v-5O-cfs" firstAttribute="centerX" secondItem="Oe7-QX-mHR" secondAttribute="centerX" id="i72-9F-22i"/>
+                            <constraint firstItem="9zb-LW-shm" firstAttribute="top" secondItem="CqU-eA-gzc" secondAttribute="bottom" constant="57" id="mAP-a3-L1z"/>
+                            <constraint firstItem="9zb-LW-shm" firstAttribute="centerX" secondItem="Oe7-QX-mHR" secondAttribute="centerX" id="xID-dF-InY"/>
+                            <constraint firstItem="pCk-a0-3fb" firstAttribute="top" secondItem="Oe7-QX-mHR" secondAttribute="top" constant="12" id="y30-Kh-KAo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oe7-QX-mHR"/>
+                    </view>
+                    <connections>
+                        <outlet property="channelDescriptionBox" destination="CqU-eA-gzc" id="8PJ-2l-tAR"/>
+                        <outlet property="channelNameBox" destination="kLu-ys-9bK" id="ynn-v6-rf3"/>
+                        <outlet property="userNameBox" destination="9zb-LW-shm" id="67N-Pi-DY1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yyt-e0-D4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xxv-fO-Iu9" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3064.8000000000002" y="972.86356821589209"/>
+        </scene>
         <!--Message View Controller-->
         <scene sceneID="bPX-P7-K63">
             <objects>
@@ -630,7 +722,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chatrooms" width="400" height="400"/>
+        <image name="Chatrooms" width="320" height="320"/>
         <image name="Zwax_logo" width="213" height="106"/>
     </resources>
 </document>
