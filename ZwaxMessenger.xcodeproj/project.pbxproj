@@ -23,6 +23,7 @@
 		CC2F8B81220CA9640017CD66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2F8B7F220CA9640017CD66 /* Main.storyboard */; };
 		CC2F8B83220CA9690017CD66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2F8B82220CA9690017CD66 /* Assets.xcassets */; };
 		CC2F8B86220CA9690017CD66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2F8B84220CA9690017CD66 /* LaunchScreen.storyboard */; };
+		CCCB86652260372E00044520 /* ChannelAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB86642260372E00044520 /* ChannelAddViewController.swift */; };
 		CCD43687223B5E1200AF54B1 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD43686223B5E1200AF54B1 /* ChannelsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		CC2F8B82220CA9690017CD66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC2F8B85220CA9690017CD66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC2F8B87220CA9690017CD66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCCB86642260372E00044520 /* ChannelAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAddViewController.swift; sourceTree = "<group>"; };
 		CCD43686223B5E1200AF54B1 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		D1DD56EB23E0D19E2731DDEE /* Pods-ZwaxMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZwaxMessenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		E8CFD0616407CF1A7978F14F /* Pods_ZwaxMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZwaxMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				B17A0D3C220E199F00B0D562 /* GoogleService-Info.plist */,
 				CC2F8B7D220CA9640017CD66 /* ViewController.swift */,
 				CC2F8B7F220CA9640017CD66 /* Main.storyboard */,
+				CCCB86642260372E00044520 /* ChannelAddViewController.swift */,
 				CC2F8B82220CA9690017CD66 /* Assets.xcassets */,
 				CC2F8B84220CA9690017CD66 /* LaunchScreen.storyboard */,
 				CC2F8B87220CA9690017CD66 /* Info.plist */,
@@ -201,7 +204,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -234,7 +237,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		484981B5578C8E87497C70A3 /* [CP] Copy Pods Resources */ = {
@@ -245,7 +248,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -256,7 +259,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZwaxMessenger/Pods-ZwaxMessenger-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66ADD684543BCAE3C312DDA5 /* [CP] Check Pods Manifest.lock */ = {
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCB86652260372E00044520 /* ChannelAddViewController.swift in Sources */,
 				CCD43687223B5E1200AF54B1 /* ChannelsViewController.swift in Sources */,
 				CC2B7BB6224D9B620062C147 /* Channel.swift in Sources */,
 				B1CD0DF022110ED6004D8E14 /* SignUpViewController.swift in Sources */,
