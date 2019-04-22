@@ -14,8 +14,11 @@ import MobileCoreServices
 class ChatsViewController: UIViewController, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var channelNameLabel: UILabel!
-    @IBOutlet var messageBox: UITextField!
     @IBOutlet var tableView: UITableView!
+
+    @IBOutlet var messageBox: UITextView!
+    
+    var timer : Timer!
     
     var messages = [Message]()
     var picArray = [UIImage]()
@@ -26,18 +29,23 @@ class ChatsViewController: UIViewController, UITableViewDataSource,UIImagePicker
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageBox!.layer.borderWidth = 1 // adds a border
         channelNameLabel.text = ChannelsViewController.currentChannelName
         tableView.dataSource = self
-        self.tableView.reloadData()
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(refreshTable), userInfo: nil, repeats: true)
         loadMessages()
-        self.tableView.reloadData()
-        database = Database.database()
-        storage = Storage.storage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate() // stops timer
+    }
+    
+    @objc func refreshTable(){
+        loadMessages()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,7 +109,7 @@ class ChatsViewController: UIViewController, UITableViewDataSource,UIImagePicker
         print("loading messages from", ChannelsViewController.currentChannelName)
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
-        db.collection("channels").document(ChannelsViewController.currentChannelID).collection("messages").addSnapshotListener{
+    db.collection("channels").document(ChannelsViewController.currentChannelID).collection("messages").addSnapshotListener{
             querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error retreiving snapshots \(error!)")
@@ -117,14 +125,12 @@ class ChatsViewController: UIViewController, UITableViewDataSource,UIImagePicker
                         else{
                             fatalError("Unable to instantiate Message")
                     }
-                    print(newmessage)
                     self.messages.append(newmessage)
                     self.order.append(1)
             }
-
-        }
-        sortMessages()
+        self.sortMessages()
         self.tableView.reloadData()
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
