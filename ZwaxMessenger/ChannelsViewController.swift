@@ -112,9 +112,9 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, ChannelTa
             for document in snapshot.documents{ 
                 guard let newChannel =
                     Channel(
-                        channelName: document.data() ["channelName"] as! String,
-                        channelDescription: document.data() ["channelDescription"] as! String,
-                        users: document.data() ["users"] as! [String]
+                        channelName: document.data() ["channelName"] as! String? ?? "no channels",
+                        channelDescription: document.data() ["channelDescription"] as! String? ?? "no channels add new channel to see one",
+                        users: document.data() ["users"] as? [String] ?? [""]
                     )
                     else{
                         fatalError("Unable to instantiate Channel")
