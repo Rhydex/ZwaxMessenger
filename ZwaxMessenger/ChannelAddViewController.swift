@@ -23,7 +23,10 @@ class ChannelAddViewController: UIViewController {
         guard let newChannel = Channel(channelName: channelNameBox.text!, channelDescription: channelDescriptionBox.text, users: [userNameBox.text ?? "", (Auth.auth().currentUser?.email)!])
             else{ fatalError("Unable to create Channel")}
         
-        collection.addDocument(data: newChannel.dictionary)
+        guard let newMessage = Message(content: "", senderEmail: "", timestamp: NSDate().timeIntervalSince1970)
+            else{ fatalError("Unable to create Message")}
+        
+        collection.addDocument(data: newChannel.dictionary).collection("messages").addDocument(data: newMessage.dictionary)
         channelNameBox.text = ""
         channelDescriptionBox.text = ""
         userNameBox.text = ""
